@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Лендинг для привлечения курьеров в Яндекс Еду. Заполните заявку и узнайте условия работы.">
+<title>Работа курьером — Яндекс Еда</title>
+<style>
+:root{
+  --yellow:#FFD21F;
+  --yellow-2:#FFEA68;
+  --black:#11110F;
+  --muted:#6E6E68;
+  --bg:#F7F7F4;
+  --card:#FFFFFF;
+  --line:#E7E7E1;
+  --green:#20A862;
+  --shadow:0 16px 50px rgba(17,17,15,.10);
+  --radius:26px;
+  --container:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--black);background:#fff}
+a{color:inherit}
+button,input,select{font:inherit}
+.container{width:min(calc(100% - 40px),var(--container));margin:auto}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(231,231,225,.8)}
+.header-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--yellow);display:grid;place-items:center;font-size:18px}
+.brand span:last-child{font-size:15px}
+.nav{display:flex;gap:28px;align-items:center;font-size:14px;color:#464641}
+.nav a{text-decoration:none}
+.nav a:hover{text-decoration:underline}
+.header-cta{background:var(--yellow);padding:12px 18px;border-radius:14px;font-weight:800;text-decoration:none;font-size:14px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--yellow) 0%,#FFE34C 42%,#FFF3A3 100%);overflow:hidden}
+.hero-inner{min-height:660px;display:grid;grid-template-columns:1.07fr .93fr;align-items:center;gap:42px;padding:58px 0 62px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(17,17,15,.08);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:800;margin-bottom:20px}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%}
+h1{font-size:clamp(42px,5.1vw,76px);line-height:.96;letter-spacing:-.055em;margin:0 0 24px;max-width:700px}
+.hero-copy{font-size:20px;line-height:1.45;max-width:620px;margin:0 0 28px;color:#282824}
+.hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn{border:0;border-radius:16px;padding:16px 22px;font-weight:850;cursor:pointer;transition:.2s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-dark{background:var(--black);color:var(--yellow)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,15,.16)}
+.btn-light{background:#fff;color:var(--black);border:1px solid rgba(17,17,15,.12)}
+.btn-light:hover{transform:translateY(-2px)}
+.hero-note{font-size:12px;color:#5A594E;margin-top:13px}
+.hero-visual{position:relative;min-height:520px}
+.phone{position:absolute;width:min(300px,58vw);aspect-ratio:1/2.02;right:9%;top:3%;border:10px solid #161614;border-radius:40px;background:#fff;box-shadow:0 28px 60px rgba(17,17,15,.22);overflow:hidden;transform:rotate(5deg)}
+.phone-notch{width:95px;height:25px;background:#161614;border-radius:0 0 16px 16px;margin:0 auto}
+.phone-screen{padding:24px 18px 18px;height:100%;background:#fafaf7}
+.balance{background:var(--yellow);border-radius:20px;padding:20px}
+.balance small{display:block;font-size:12px;font-weight:800;opacity:.7}
+.balance strong{display:block;font-size:32px;margin-top:4px}
+.balance em{font-style:normal;font-size:12px;opacity:.72}
+.order-card{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}
+.order-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:10px}
+.pill{display:inline-block;background:#EDF8F1;color:#137746;padding:6px 9px;border-radius:99px;font-size:11px;font-weight:800}
+.map-shape{position:absolute;right:-8%;bottom:2%;width:370px;height:260px;border-radius:38px;background:rgba(255,255,255,.56);border:1px solid rgba(17,17,15,.08);transform:rotate(-7deg);overflow:hidden}
+.map-shape:before,.map-shape:after{content:"";position:absolute;border:1px dashed rgba(17,17,15,.15);border-radius:50%}
+.map-shape:before{width:280px;height:130px;left:-30px;top:45px;transform:rotate(18deg)}
+.map-shape:after{width:170px;height:260px;right:40px;top:-60px;transform:rotate(35deg)}
+.pin{position:absolute;width:52px;height:52px;border-radius:50%;background:var(--black);color:var(--yellow);display:grid;place-items:center;font-size:22px;box-shadow:0 12px 22px rgba(17,17,15,.2)}
+.pin:nth-child(1){left:62px;top:98px}.pin:nth-child(2){right:84px;top:72px}.pin:nth-child(3){right:118px;bottom:36px}
+
+/* Trust strip */
+.strip{background:var(--black);color:white}
+.strip-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip-item{padding:22px 16px;border-right:1px solid rgba(255,255,255,.1);text-align:center}
+.strip-item:last-child{border-right:0}
+.strip-number{font-size:26px;font-weight:900;letter-spacing:-.03em;color:var(--yellow)}
+.strip-label{font-size:12px;color:#BFC0B9;margin-top:3px}
+
+/* Sections */
+section{padding:92px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
+.kicker{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:900;color:#85857D;margin-bottom:10px}
+h2{font-size:clamp(34px,4.2vw,58px);line-height:1;letter-spacing:-.045em;margin:0}
+.section-sub{max-width:480px;color:var(--muted);font-size:17px;line-height:1.5;margin:0}
+
+/* Benefits */
+.benefits{background:var(--bg)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.benefit{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s ease}
+.benefit:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.icon{width:46px;height:46px;border-radius:14px;background:var(--yellow);display:grid;place-items:center;font-size:22px}
+.benefit h3{font-size:22px;letter-spacing:-.025em;margin:24px 0 9px}
+.benefit p{color:var(--muted);line-height:1.5;margin:0}
+.benefit.accent{background:var(--yellow)}
+.benefit.accent .icon{background:var(--black);color:var(--yellow)}
+
+/* Steps */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{border-top:2px solid var(--black);padding-top:20px}
+.step-num{font-size:12px;font-weight:900;color:#7B7B74;margin-bottom:54px}
+.step h3{font-size:28px;letter-spacing:-.035em;margin:0 0 10px}
+.step p{color:var(--muted);line-height:1.55;margin:0;max-width:330px}
+.step-cta{margin-top:24px}
+
+/* Calculator */
+.calc-section{background:#11110F;color:#fff}
+.calc-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+.calc-section .kicker{color:#9E9F96}
+.calc-section h2{color:#fff}
+.calc-copy{color:#BDBEB7;font-size:17px;line-height:1.55;max-width:480px;margin-top:18px}
+.calc-card{background:#fff;color:var(--black);border-radius:30px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.field{margin-bottom:20px}
+.field label{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:800;margin-bottom:9px}
+.field output{color:#6A6A63}
+.select,.range{width:100%}
+.select{padding:14px;border-radius:14px;border:1px solid var(--line);background:#fff}
+input[type=range]{accent-color:var(--yellow);cursor:pointer}
+.result{margin-top:25px;background:var(--yellow);border-radius:20px;padding:20px}
+.result small{display:block;font-size:12px;font-weight:800;opacity:.7}
+.result strong{display:block;font-size:38px;letter-spacing:-.04em;margin:3px 0}
+.result span{font-size:12px;color:#5E5D51}
+
+/* Lead */
+.lead{background:var(--yellow);}
+.lead-wrap{display:grid;grid-template-columns:1fr .86fr;gap:70px;align-items:center}
+.lead-copy h2{max-width:650px}
+.lead-copy p{font-size:18px;line-height:1.55;max-width:580px;color:#34342E}
+.mini-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:26px}
+.mini-list div{font-size:13px;font-weight:800;display:flex;gap:9px;align-items:flex-start}
+.mini-list b{width:22px;height:22px;border-radius:50%;background:var(--black);color:var(--yellow);display:grid;place-items:center;font-size:11px;flex:none}
+.form-card{background:#fff;border-radius:30px;padding:28px;box-shadow:var(--shadow)}
+.form-card h3{font-size:28px;letter-spacing:-.03em;margin:0 0 8px}
+.form-card .muted{color:var(--muted);font-size:14px;line-height:1.45;margin-bottom:20px}
+.input{width:100%;padding:15px 16px;border-radius:14px;border:1px solid var(--line);outline:none;margin-bottom:10px}
+.input:focus{border-color:#AAA}
+.form-card .btn{width:100%}
+.consent{font-size:11px;line-height:1.45;color:#7A7A72;margin-top:12px;text-align:center}
+.success{display:none;margin-bottom:12px;padding:12px 14px;border-radius:12px;background:#E9F8EF;color:#157344;font-size:13px;font-weight:800}
+
+/* FAQ */
+.faq-grid{max-width:900px;margin:0 auto}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 0;font-size:19px;font-weight:800;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:#8D8D85;font-weight:500}
+details[open] summary::after{content:"−"}
+details p{margin:0 0 23px;color:var(--muted);line-height:1.6;max-width:800px}
+
+/* Footer */
+.footer{background:#F7F7F4;border-top:1px solid var(--line);padding:34px 0}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:center;font-size:12px;color:#77776F}
+.footer-brand{color:var(--black);font-weight:850}
+
+/* Floating mobile CTA */
+.mobile-cta{display:none}
+
+@media(max-width:900px){
+  .nav{display:none}
+  .hero-inner{grid-template-columns:1fr;min-height:auto;padding-top:45px}
+  .hero-visual{min-height:450px;max-width:580px;width:100%;margin:auto}
+  .phone{right:16%;width:240px}
+  .map-shape{right:0;width:320px;height:220px}
+  .benefit-grid,.steps-grid{grid-template-columns:1fr 1fr}
+  .calc-wrap,.lead-wrap{grid-template-columns:1fr}
+  .strip-inner{grid-template-columns:1fr 1fr}
+  .strip-item:nth-child(2){border-right:0}
+  .strip-item:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.1)}
+}
+@media(max-width:620px){
+  .container{width:min(calc(100% - 28px),var(--container))}
+  .header-inner{height:64px}.header-cta{padding:10px 13px;font-size:12px}
+  .hero-inner{padding:38px 0 30px;gap:15px}
+  h1{font-size:48px}.hero-copy{font-size:17px}
+  .hero-actions .btn{width:100%}
+  .hero-visual{min-height:360px}
+  .phone{width:200px;right:12%;border-width:7px;border-radius:28px}.phone-notch{width:72px;height:18px}.phone-screen{padding:15px}.balance strong{font-size:26px}
+  .map-shape{width:250px;height:170px;border-radius:26px;right:2%;bottom:0}
+  .pin{width:40px;height:40px;font-size:17px}.pin:nth-child(1){left:42px;top:62px}.pin:nth-child(2){right:55px;top:45px}.pin:nth-child(3){right:70px;bottom:25px}
+  .strip-item{padding:18px 8px}.strip-number{font-size:21px}
+  section{padding:68px 0}.section-head{display:block;margin-bottom:30px}.section-sub{margin-top:15px}
+  .benefit-grid,.steps-grid{grid-template-columns:1fr}.benefit{min-height:190px}
+  .step-num{margin-bottom:30px}
+  .calc-card,.form-card{padding:20px;border-radius:22px}
+  .result strong{font-size:32px}
+  .mini-list{grid-template-columns:1fr}
+  .footer-inner{display:block}.footer-inner>*{display:block;margin-bottom:8px}
+  .mobile-cta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:70}.mobile-cta a{display:block;text-align:center;background:var(--black);color:var(--yellow);padding:15px;border-radius:16px;font-weight:900;text-decoration:none;box-shadow:0 14px 30px rgba(17,17,15,.24)}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="В начало">
+      <span class="brand-mark">Я</span><span>Курьер в Яндекс Еде</span>
+    </a>
+    <nav class="nav">
+      <a href="#benefits">Преимущества</a>
+      <a href="#steps">Как начать</a>
+      <a href="#calculator">Доход</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="header-cta" href="#apply">Заполнить заявку</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Набор курьеров открыт</div>
+      <h1>Работайте курьером.<br>Выбирайте свой график.</h1>
+      <p class="hero-copy">Доставляйте пешком, на велосипеде, самокате или автомобиле. Выбирайте удобные часы и район — и выходите на линию, когда вам удобно.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#apply">Хочу стать курьером →</a>
+        <a class="btn btn-light" href="#calculator">Рассчитать доход</a>
+      </div>
+      <div class="hero-note">* Условия и размер дохода зависят от города, графика, транспорта и действующих предложений.</div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="map-shape"><div class="pin">₽</div><div class="pin">⌁</div><div class="pin">✓</div></div>
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="balance"><small>РАСЧЁТНЫЙ ДОХОД</small><strong>4 980 ₽</strong><em>за сегодняшнюю смену</em></div>
+          <div class="order-card"><div class="order-row"><strong>Заказ #4281</strong><span class="pill">+390 ₽</span></div><div class="order-row"><span>Ресторан → клиент</span><span>1,8 км</span></div><div class="order-row"><span>В пути</span><span>18 мин</span></div></div>
+          <div class="order-card"><div class="order-row"><strong>Заказ #4282</strong><span class="pill">+520 ₽</span></div><div class="order-row"><span>Ресторан → клиент</span><span>2,4 км</span></div><div class="order-row"><span>Готов к выдаче</span><span>сейчас</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="container strip-inner">
+    <div class="strip-item"><div class="strip-number">1–2</div><div class="strip-label">условных заказа в час в примере</div></div>
+    <div class="strip-item"><div class="strip-number">7–10 мин</div><div class="strip-label">короткое обучение в исходном лендинге</div></div>
+    <div class="strip-item"><div class="strip-number">24/7</div><div class="strip-label">вы сами выбираете время выхода*</div></div>
+    <div class="strip-item"><div class="strip-number">4</div><div class="strip-label">варианта транспорта</div></div>
+  </div>
+</section>
+
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">Почему это удобно</div><h2>Работа под<br>ваш ритм</h2></div>
+      <p class="section-sub">В исходном сайте уже были сильные преимущества — мы собрали их в компактные карточки, которые легче сканировать с телефона.</p>
+    </div>
+    <div class="benefit-grid">
+      <article class="benefit accent"><div class="icon">⚡</div><div><h3>Быстрый старт</h3><p>Заполните заявку, пройдите короткое обучение и активируйтесь.</p></div></article>
+      <article class="benefit"><div class="icon">◴</div><div><h3>Гибкий график</h3><p>Можно совмещать доставки с основной работой или учебой.</p></div></article>
+      <article class="benefit"><div class="icon">₽</div><div><h3>Понятный расчёт</h3><p>Перед выходом можно прикинуть доход под количество дней и часов.</p></div></article>
+      <article class="benefit"><div class="icon">🚲</div><div><h3>Разный транспорт</h3><p>Пешком, на велосипеде, самокате или автомобиле — выбирайте удобный вариант.</p></div></article>
+      <article class="benefit"><div class="icon">🎁</div><div><h3>Бонусы и скидки</h3><p>В исходнике указаны бонусы за приглашение друзей и скидки на транспорт у партнёров.</p></div></article>
+      <article class="benefit"><div class="icon">🛵</div><div><h3>Помощь с транспортом</h3><p>Есть выгодные варианты аренды транспорта и дополнительные условия для курьеров.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">Старт без лишнего</div><h2>Три шага<br>до первой доставки</h2></div>
+      <p class="section-sub">Эту последовательность мы сохранили из исходного лендинга, но сделали её визуально заметнее.</p>
+    </div>
+    <div class="steps-grid">
+      <article class="step"><div class="step-num">01</div><h3>Оставьте заявку</h3><p>Укажите номер телефона и получите ссылку на регистрацию.</p><div class="step-cta"><a class="btn btn-light" href="#apply">Заполнить</a></div></article>
+      <article class="step"><div class="step-num">02</div><h3>Пройдите обучение</h3><p>В исходнике указано короткое обучение о правилах сервиса — примерно 7–10 минут.</p></article>
+      <article class="step"><div class="step-num">03</div><h3>Активируйтесь</h3><p>После подключения можно выходить на линию и выполнять заказы.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="calc-section" id="calculator">
+  <div class="container calc-wrap">
+    <div>
+      <div class="kicker">Интерактивный блок</div>
+      <h2>Сколько можно<br>заработать?</h2>
+      <p class="calc-copy">В исходнике используется расчёт по ставке за час × дни × часы с ограничением по максимальному доходу города. Здесь калькулятор проще: он показывает сценарий по выбранному транспорту и вашему графику.</p>
+    </div>
+    <div class="calc-card">
+      <div class="field"><label>Тип доставки</label><select class="select" id="transport"><option value="417">Автомобиль</option><option value="334">Велосипед / самокат</option><option value="278">Пешком</option></select></div>
+      <div class="field"><label><span>Дни в месяц</span><output id="daysOut">20</output></label><input class="range" id="days" type="range" min="1" max="31" value="20"></div>
+      <div class="field"><label><span>Часы в день</span><output id="hoursOut">8</output></label><input class="range" id="hours" type="range" min="1" max="12" value="8"></div>
+      <div class="result"><small>ПРИМЕРНЫЙ ДОХОД ПО СЦЕНАРИЮ</small><strong id="income">66 720 ₽</strong><span>Ставка в демо-калькуляторе основана на значениях из исходного файла и требует актуализации перед публикацией.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="lead" id="apply">
+  <div class="container lead-wrap">
+    <div class="lead-copy">
+      <div class="kicker">Последний шаг</div>
+      <h2>Получите ссылку на регистрацию</h2>
+      <p>Оставьте номер телефона. После отправки формы можно направить пользователя на официальную анкету или связаться с ним вручную.</p>
+      <div class="mini-list">
+        <div><b>✓</b><span>Форма в один шаг</span></div>
+        <div><b>✓</b><span>Мобильная версия</span></div>
+        <div><b>✓</b><span>Проверка номера</span></div>
+        <div><b>✓</b><span>Согласие на обработку данных</span></div>
+      </div>
+    </div>
+    <form class="form-card" id="leadForm">
+      <div class="success" id="success">Заявка сохранена. Ниже можно указать вашу ссылку на регистрацию.</div>
+      <h3>Стать курьером</h3>
+      <p class="muted">Введите номер телефона — поле настроено для российского формата.</p>
+      <input class="input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" required>
+      <button class="btn btn-dark" type="submit">Получить анкету →</button>
+      <div class="consent">Нажимая кнопку, пользователь подтверждает согласие с политикой обработки персональных данных.</div>
+    </form>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">FAQ</div><h2>Частые вопросы</h2></div>
+      <p class="section-sub">Вопросы и ответы ниже перенесены по смыслу из исходника. Перед запуском проекта их стоит сверить с текущими условиями сервиса.</p>
+    </div>
+    <div class="faq-grid">
+      <details><summary>Можно работать пешком, на велосипеде, самокате или автомобиле?</summary><p>Да,Конкретные доступные способы доставки зависят от города и действующих условий.</p></details>
+      <details><summary>Можно ли совмещать работу с основной занятостью?</summary><p>Да. Можно рассматривать доставки как подработку и самостоятельно выбирать удобное время.</p></details>
+      <details><summary>Сколько длится обучение?</summary><p>Ориентировочно 7–10 минут.</p></details>
+      <details><summary>Какие документы нужны?</summary><p>Паспорт , снилс , инн .</p></details>
+      <details><summary>Из каких ресторанов бывают заказы?</summary><p>Из ресторанов, доступных в вашем районе.</p></details>
+      <details><summary>Можно ли получать выплаты каждый день?</summary><p>Да, для самозанятых курьеров. Либо раз в неделю.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">Курьер у партнера в Яндекс Еде</div>
+    <div>Лендинг .</div>
+    <div>© 2026</div>
+  </div>
+</footer>
+
+<div class="mobile-cta"><a href="#apply">Заполнить заявку</a></div>
+
+<script>
+// ====== НАСТРОЙКИ ПЕРЕД ПУБЛИКАЦИЕЙ ======
+const CONFIG = {
+  // Вставьте сюда вашу реальную ссылку на анкету Яндекс Еды.
+  registrationUrl: 'https://trk.ppdu.ru/click?uid=103033&oid=2304&erid=CQH36pWzJqVGXC5oLP8WVVNCNqJmbhiUPijGiu4zpwPd7G',
+  // Если у вас есть backend/API, вместо demo submit подключите его здесь.
+};
+
+const transport = document.getElementById('transport');
+const days = document.getElementById('days');
+const hours = document.getElementById('hours');
+const daysOut = document.getElementById('daysOut');
+const hoursOut = document.getElementById('hoursOut');
+const income = document.getElementById('income');
+
+function money(n){ return Math.round(n).toLocaleString('ru-RU') + ' ₽'; }
+function recalc(){
+  const rate = Number(transport.value);
+  const d = Number(days.value);
+  const h = Number(hours.value);
+  daysOut.textContent = d;
+  hoursOut.textContent = h;
+  income.textContent = money(rate * d * h);
+}
+transport.addEventListener('change', recalc);
+days.addEventListener('input', recalc);
+hours.addEventListener('input', recalc);
+recalc();
+
+function normalizePhone(value){
+  return value.replace(/\D/g,'').slice(0,11);
+}
+const phone = document.getElementById('phone');
+phone.addEventListener('input', () => {
+  let digits = normalizePhone(phone.value);
+  if (!digits) { phone.value=''; return; }
+  if (digits[0] === '8') digits = '7' + digits.slice(1);
+  if (digits[0] !== '7') digits = '7' + digits;
+  let out = '+7';
+  if (digits.length > 1) out += ' (' + digits.slice(1,4);
+  if (digits.length >= 4) out += ')';
+  if (digits.length > 4) out += ' ' + digits.slice(4,7);
+  if (digits.length > 7) out += '-' + digits.slice(7,9);
+  if (digits.length > 9) out += '-' + digits.slice(9,11);
+  phone.value = out;
+});
+
+document.getElementById('leadForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const digits = normalizePhone(phone.value);
+  if (digits.length !== 11 || digits[0] !== '7') {
+    phone.focus();
+    phone.setCustomValidity('Введите корректный номер телефона');
+    phone.reportValidity();
+    phone.setCustomValidity('');
+    return;
+  }
+  document.getElementById('success').style.display = 'block';
+  // В рабочей версии можно отправить лид на backend/CRM перед редиректом.
+  setTimeout(() => {
+    if (CONFIG.registrationUrl) window.open(CONFIG.registrationUrl, '_blank', 'noopener');
+  }, 700);
+});
+</script>
+</body>
+</html>
